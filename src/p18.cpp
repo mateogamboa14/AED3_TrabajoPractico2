@@ -8,19 +8,19 @@ void setup()
     RCC->APB2ENR |= RCC_APB2ENR_IOPBEN_Msk;
 
     GPIOA->CRL |= 0x11111111;           // config.: 00 : output push-pull and mode: 01 : output max speed 10MHz
-    GPIOB->CRL &= ~(1 << 0) & ~(1 << 1) // Mode : 00 : input
+    GPIOB->CRL &= ~(1 << 0) & ~(1 << 1) // mode: 00 : input
                       & ~(1 << 2) |
                   (1 << 3); // config.: 01 : floating input
 }
-void setup()
+void loop()
 {
-    estB = GPIOB->IDR & (1u << 0);
-    if (estB == '1')
+    estB = GPIOB->IDR & (1 << 0);
+    if (estB = '1')
     {
-        GPIOA->BSRR |= (1u << 0) | (1u << 2) | (1u << 4) | (1u << 6);
+        GPIOA->BSRR |= 0x000F; // 0b,0000,0000,0000,1111
     }
     else
     {
-        GPIOB->BSRR |= (1u << 1) | (1U << 3) | (1U << 5) | (1u << 7);
+        GPIOA->BSRR |= 0x00F0; // 0b,0000,0000,1111,0000;
     }
 }

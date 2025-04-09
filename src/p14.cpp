@@ -15,6 +15,5 @@ void setup()
 void loop()
 {
     estadoB = GPIOB->IDR;
-    GPIOA->BSRR |= estadoB >> 1;
-    // GPIOA->BSRR |= (GPIOB->IDR)>>1;
+    GPIOA->BSRR |= (estadoB >> 1);
 }
